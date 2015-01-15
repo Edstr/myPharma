@@ -123,8 +123,15 @@ namespace myPharma
                         minutesString = minutes.ToString();
                     }
 
-                    // Ajout d'un 'vu' devant l'heure de prise du médicament.
-                    return "\u231A" + hoursString + ":" + minutesString;
+                    string txt = "";
+                    // Ajout d'un 'vu' devant l'heure de prise du médicament lorsque le rappel est actif.
+
+                    txt += hoursString + ":" + minutesString;
+
+                    if (this.reminder)
+                        txt += "\u231A";
+
+                    return txt;
                 }
                 else { return ""; }
             }
@@ -166,7 +173,7 @@ namespace myPharma
                     }
 
                     // Ajout d'une 'horloge' devant l'heure de dernière prise du médicament.
-                    return "\u221A" + hoursString + ":" + minutesString;
+                    return  hoursString + ":" + minutesString + "\u221A";
                 }
                 else { return ""; }
             }
